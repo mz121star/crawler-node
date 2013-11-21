@@ -24,15 +24,41 @@
         },
         EnableEle=function(){
             $("#go").removeAttr("disabled");
+        } ,
+        RemoveStyle=function(a){
+            var style=  $(a.target).data("reunion-style");
+            if(style)
+                $(a.target).attr("style", style)
+            else
+                $(a.target).removeAttr("style")
+        },
+        ToggleSize=function(){
+            $("#fullBrowser").on("click",function(){
+                $("#left").toggleClass(function(){
+                    $("left").attr("class","col-md-4");
+                },function(){
+                    $("left").attr("class","col-md-12");
+                },1000)
+
+
+                $("#right").toggleClass(function(){
+                    $("right").attr("class","col-md-8");
+                },function(){
+                    $("right").attr("class","col-md-12");
+                })
+               // $("#right").removeClass("col-md-8").addClass("col-md-12")
+            })
         }
 
     /*********************************************************************
      * 为iframe中的浏览器注册事件
      **********************************************************************/
+    ToggleSize();
     var registerEvent = function () {
         var doc = document.getElementById('browser').contentWindow.document;
         $(doc).on("click", function (a) {
             if(_CURRENT_REG_TEXT){
+                RemoveStyle(a);
                 $(_CURRENT_REG_TEXT).val(a.target.outerHTML)
             }
             console.log(a.target.innerHTML);
@@ -41,10 +67,12 @@
             return false
         })
         $(doc).on("mouseover", function (a) {
+            var style= $(a.target).attr("style") ;
+            $(a.target).data("reunion-style",style);
             $(a.target).css("border", "1px solid red")
         })
         $(doc).on("mouseout", function (a) {
-            $(a.target).css("border", "0px solid red")
+            RemoveStyle(a);
         })
 
     }

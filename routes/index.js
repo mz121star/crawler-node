@@ -5,7 +5,7 @@ var phantom = require('node-phantom');
 var events = require('events');
 var querystring = require('querystring');
 var url = require('url');
-
+var _util = require("../core/util");
 var getPage = function (url) {
 
     var emitter = new events.EventEmitter()
@@ -41,6 +41,10 @@ var getPage = function (url) {
 
     return emitter;
 }
+
+var getPageSource=function(url){
+
+}
 exports.index = function (req, res) {
 
 
@@ -52,10 +56,23 @@ exports.getPage = function (req, res) {
     var params = querystring.parse(url)
     if (!params.page)
         params.page = "http://localhost";
-    getPage(params.page).on("success", function (d) {
-        res.send(d);
-    })
 
+
+   /* _util.GetPageVisual(params.page)
+        .on("success", function (d) {
+            res.send(d);
+
+        })
+        .on("error", function (err) {
+            console.log(err);
+
+        })
+        .on("exit",function(d){
+            console.log('子进程已退出，代码：' + d);
+        })*/
+    getPage(params.page).on("success", function (d) {
+            res.send(d);
+     })
 
 };
 
