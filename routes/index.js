@@ -42,14 +42,24 @@ var getPage = function (url) {
     return emitter;
 }
 
-var getPageSource=function(url){
 
-}
 exports.index = function (req, res) {
 
 
     res.render('index', { title: 'Express' });
 };
+exports.getPageSource=function(req,res){
+    var _url = req.url;
+    _url = _url.replace("/getpagesource?", "")
+    var params = querystring.parse(_url)
+    if (!params.page)
+        params.page = "http://localhost";
+    _util.getPageSource(params.page,function(d){
+       var a= url.parse(params.page)
+       d= d.replace("<head>","<head><base href='http://"+ a.host +"'/> ")
+        res.send(d);
+    })
+}
 exports.getPage = function (req, res) {
     var url = req.url;
     url = url.replace("/getpage?", "")

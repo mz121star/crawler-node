@@ -92,6 +92,9 @@
      * 浏览器iframe事件，当点击GO按钮，转向网址
      **********************************************************************/
     $("#go").on("click", function () {
+
+       console.log( $("input:radio[name='optionsRadios'].checked").val() )
+
         DisableEle();
         $("#status").html("loading....");
         var address = $("#address").val();

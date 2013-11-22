@@ -1,6 +1,6 @@
 var child_process = require('child_process');
 var events = require('events');
-
+var httpget = require('http-get');
 exports.GetPageVisual = function (url, callback) {
 
     var emitter = new events.EventEmitter();
@@ -24,3 +24,14 @@ exports.GetPageVisual = function (url, callback) {
 
 }
 
+ exports.getPageSource=function(url,callback){
+    var options = {url: url,  bufferType : "buffer"};
+     httpget.get(options, function (error, result) {
+         if (error) {
+             console.error(error);
+         } else {
+             callback(result.buffer.toString("utf8"));
+             console.log('The XML document contents: ' + result.buffer);
+         }
+     });
+ }
