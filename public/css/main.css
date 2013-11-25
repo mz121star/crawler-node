@@ -1,0 +1,19 @@
+.no-border  {
+    border: none;
+    border-bottom: 1px solid black ;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fff;
+    background-image: none;
+
+}
+  .stepKey{
+      cursor: pointer;
+  }
+
+.no-border{outline:none}
+/*textarea{resize:none}*/

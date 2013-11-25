@@ -15,9 +15,9 @@
         },
         GetBrowserAddress=function(){
             var url=  document.getElementById('browser').contentWindow.document.location.href;
-            var reg=/getpage\?page=(.*)/gmi
+            var reg=/getpagesource\?page=(.*)/gmi
             url=url.match(reg)[0];
-            return url.replace("getpage?page=","");
+            return url.replace("getpagesource?page=","");
         } ,
         DisableEle=function(){
             $("#go").attr("disabled","disabled") ;
@@ -98,7 +98,7 @@
         DisableEle();
         $("#status").html("loading....");
         var address = $("#address").val();
-        var url = "/getpage?page=";
+        var url = "/getpagesource?page=";
         browser.attr("src", url + encodeURIComponent(address))
     })
 
@@ -117,7 +117,11 @@
         var text=$(parent).find(".stepReg")
        $("#expPreview"). val(text.val())
     })
-
+    //  $(".mytip").popover({trigger:"hover",placement:"bottom",container: 'body',offset:5})
+      $(".keyVar").on("click",function(){
+           var result="["+$(this).val()+$("#keyName").val()+"]";
+          $("#keyResult").val(result)
+      })
     /**
      * 移除文本公式组件
      */
@@ -128,8 +132,11 @@
      * 添加文本公式组件
      */
     $("#addStep").on("click",function(){
+        $(".mytip").popover("hide");
        var shadow= $("#stepTemp").clone(true) ;
         $(shadow).find(".stepReg").val("");
+        $(shadow).find(".stepKey").val("");
+
        $(shadow).attr("id","step"+(counter++));
        $("#stepRegion").append(shadow);
     })
