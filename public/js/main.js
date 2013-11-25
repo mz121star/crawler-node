@@ -8,6 +8,7 @@
         ,counter=0
         //当前选中的step文本框
        ,_CURRENT_REG_TEXT
+        ,_CURRENT_KEY_TEXT
 
 
     var SetURLAddress=function(addr){
@@ -112,6 +113,10 @@
         var text=$(parent).find(".stepReg")
         _CURRENT_REG_TEXT=text[0] ;
     })
+    $(".stepKey").on("click",function(){
+        _CURRENT_KEY_TEXT=$(this) ;
+    })
+
     $(".previewRegion").on("click",function(){
         var parent= $(this).parent().parent()
         var text=$(parent).find(".stepReg")
@@ -122,6 +127,9 @@
            var result="["+$(this).val()+$("#keyName").val()+"]";
           $("#keyResult").val(result)
       })
+    $("#saveKey").on("click",function(){
+        _CURRENT_KEY_TEXT.val( $("#keyResult").val())
+    })
     /**
      * 移除文本公式组件
      */
