@@ -17,3 +17,12 @@
 
 .no-border{outline:none}
 /*textarea{resize:none}*/
+
+.remove-btn{
+    position: absolute;
+    margin-left: -24px;
+    margin-top: 6px;
+}
+.stepReg:hover{
+
+}

@@ -39,62 +39,75 @@
 <p></p>
 
 
-
-
 <div class="container">
     <div class="row">
         <div id="left" class=" col-md-12">
             <div class="panel panel-success">
                 <div class="panel-heading">
-                    <h3 class="panel-title">工具栏</h3>
+                    <h3 class="panel-title">网页爬虫配置</h3>
                 </div>
                 <div class="panel-body">
                     <div id="tools">
                         <div class="row ">
                             <div id="stepRegion" class=" ">
-                                <button id="addStep" class="btn btn-success"  data-bind="click: addNewText" type="button"><i
-                                        class="fa fa-plus-square-o"></i></button>
+                                <button id="addStep" class="btn btn-primary" data-bind="click: addNewText"
+                                        type="button"><i
+                                        class="fa fa-plus"></i></button>
 
-                                <div data-bind="foreach: keyVals"  class="input-group">
+                                <div data-bind="foreach: keyVals" class="input-group">
                                     <form class="form-inline" role="form">
                                            <span class="input-group-btn">
                                                    <div class="form-group">
-                                                      <!-- <input type="text" class=" form-control stepKey mytip" data-toggle="popover" title=""  role="button"  data-original-title="选择类型" data-content="And here's some amazing content. It's very engaging. right?" >-->
-                                                       <input type="text" data-bind="value: key" class=" form-control stepKey mytip"   data-toggle="modal" data-target="#setKeyType"  >
+                                                       <!-- <input type="text" class=" form-control stepKey mytip" data-toggle="popover" title=""  role="button"  data-original-title="选择类型" data-content="And here's some amazing content. It's very engaging. right?" >-->
+                                                       <input type="text" data-bind="value: key"
+                                                              class="btn-warning form-control stepKey mytip"
+                                                              data-toggle="modal" data-target="#setKeyType">
                                                    </div>
 
-                                                     =
-                                                     <div  data-bind="foreach: values">
+                                                     <span class="label label-info" >=</span>
+                                                     <span data-bind="foreach: values" style="max-width: 700px ;overflow-x: scroll">
                                                           <div class="form-group">
-                                                              <input type="text" data-bind="value: $data" class=" form-control stepReg">
-                                                         </div>  =>
-                                                     </div>
+                                                              <input type="text" data-bind="value: valtext"
+                                                                     class=" form-control btn-default stepReg">
+                                                              <button class="btn btn-danger btn-xs remove-btn " data-bind="click: $root.removeSubText" type="button" >
+                                                                  <i class="fa fa-times "></i>
+                                                              </button>
+                                                          </div><span class="label label-info" >=></span>
+                                                     </span>
+
+                                                       <div class="input-group-btn">
+                                                            <button class="btn btn-info" type="button"
+                                                                    data-bind="click:$root.addNextText">=>
+                                                            </button>
+
+                                                            <button class="btn btn-info  selectRegion" type="button"
+                                                                    data-toggle="modal"
+                                                                    data-target="#right" title="选取"><i
+                                                                    class="fa fa-hand-o-up"></i></button>
+
+                                                            <button class="btn btn-success previewRegion" type="button"
+                                                                    data-toggle="modal"
+                                                                    data-target="#myModal" title="预览"><i
+                                                                    class="fa fa-eye"></i> </i>
+                                                            </button>
 
 
-                                                      <button class="btn btn-info" type="button" data-bind="click:$root.addNextText">=></button>
-
-                                                    <button class="btn btn-info  selectRegion" type="button"
-                                                            data-toggle="modal"
-                                                            data-target="#right" title="选取"><i
-                                                            class="fa fa-hand-o-up"></i></button>
-
-                                                 <button class="btn btn-success previewRegion" type="button"
-                                                         data-toggle="modal"
-                                                         data-target="#myModal" title="预览"><i
-                                                         class="fa fa-eye"></i> </i>
-                                                 </button>
-
-
-                                                 <button data-bind="click: $root.remove" class="btn btn-danger stepRemove" type="button" title="移除"><i
-                                                         class="fa fa-times "></i>
-                                                 </button>
-
+                                                            <button data-bind="click: $root.remove"
+                                                                    class="btn btn-danger stepRemove" type="button"
+                                                                    title="移除"><i
+                                                                    class="fa fa-times "></i>
+                                                            </button>
+                                                        </div>
                                             </span>
                                     </form>
 
                                 </div>
                                 <!-- /input-group -->
-                                 <textarea data-bind="value:syntax" cols="100" rows="10" disabled></textarea>
+                                <textarea data-bind="value:syntax" cols="100" rows="10" disabled></textarea>
+
+                                <div>
+                                    <button class="btn btn-primary btn-lg">Test</button>
+                                </div>
                             </div>
                             <!-- /.col-lg-6 -->
 
@@ -120,14 +133,15 @@
             </div>
             <div class="modal-body">
 
-                    <div class="input-group">
-                        <input type="text" id="keyName" class="form-control" placeholder="变量名">
+                <div class="input-group">
+                    <input type="text" id="keyName" class="form-control" placeholder="变量名">
                           <span class="input-group-btn">
                                  <button type="button" class="btn btn-info keyVar" value="$">局部变量</button>
                                  <button type="button" class="btn btn-danger keyVar " value=".">全局变量</button>
                           </span>
-                        <input type="text" class=" form-control" id="keyResult"  disabled placeholder="结果预览">
-                    </div><!-- /input-group -->
+                    <input type="text" class=" form-control" id="keyResult" disabled placeholder="结果预览">
+                </div>
+                <!-- /input-group -->
 
             </div>
             <div class="modal-footer">
