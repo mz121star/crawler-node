@@ -140,7 +140,7 @@
      * 添加文本公式组件
      */
     $("#addStep").on("click",function(){
-        $(".mytip").popover("hide");
+      /*  $(".mytip").popover("hide");*/
        var shadow= $("#stepTemp").clone(true) ;
         $(shadow).find(".stepReg").val("");
         $(shadow).find(".stepKey").val("");
