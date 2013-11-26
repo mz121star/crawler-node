@@ -11,11 +11,23 @@ function AppViewModel() {
         self.lastName(currentVal.toUpperCase()); // Write back a modified value
     };
     self.addText=function(){
-        self.keyVals.push({key:"Title",value:"/<title>(.*)<\/title>/"}) ;
+        self.keyVals.push({key:ko.observable("Title"),value:ko.observable("/<title>(.*)<\/title>/")}) ;
     }
     self.keyVals=ko.observableArray([
-        {key:"Title",value:"/<title>(.*)<\/title>/"}
+        {
+            key:ko.observable("Title")
+           ,value:ko.observable("/<title>(.*)<\/title>/")
+        }
     ]);
+    self.remove = function(kv) {
+        self.keyVals.remove(kv)
+    }
+    self.syntax = ko.computed(function() {
+        var result = "";
+        for (var i = 0; i < self.keyVals().length; i++)
+            result += self.keyVals()[i].key()  + "="+ self.keyVals()[i].value()+","
+        return result;
+    });
 
 
 }
