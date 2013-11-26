@@ -37,16 +37,6 @@
 
 <!-- Add your site or application content here -->
 <p></p>
-<p>First name: <input data-bind="value: firstName" /></p>
-<p>Last name: <input data-bind="value: lastName" /></p>
-<p>Full name: <strong data-bind="text: fullName"></strong></p>
-<button data-bind="click: addText">Go caps</button>
-
-
-<ul data-bind="foreach: keyVals">
-    <li data-bind="text: key"></li>
-    <li data-bind="text: value"></li>
-</ul>
 
 
 
@@ -60,24 +50,28 @@
                 </div>
                 <div class="panel-body">
                     <div id="tools">
-                        <div class="row">
+                        <div class="row ">
                             <div id="stepRegion" class=" ">
-                                <button id="addStep" class="btn btn-success" type="button"><i
+                                <button id="addStep" class="btn btn-success"  data-bind="click: addNewText" type="button"><i
                                         class="fa fa-plus-square-o"></i></button>
-                                <div id="stepTemp" class="input-group">
 
-
+                                <div data-bind="foreach: keyVals"  class="input-group">
                                     <form class="form-inline" role="form">
                                            <span class="input-group-btn">
                                                    <div class="form-group">
                                                       <!-- <input type="text" class=" form-control stepKey mytip" data-toggle="popover" title=""  role="button"  data-original-title="选择类型" data-content="And here's some amazing content. It's very engaging. right?" >-->
-                                                       <input type="text" class=" form-control stepKey mytip"   data-toggle="modal" data-target="#setKeyType"  >
+                                                       <input type="text" data-bind="value: key" class=" form-control stepKey mytip"   data-toggle="modal" data-target="#setKeyType"  >
                                                    </div>
 
                                                      =
-                                                  <div class="form-group">
-                                                      <input type="text" class=" form-control stepReg">
-                                                  </div>
+                                                     <div  data-bind="foreach: values">
+                                                          <div class="form-group">
+                                                              <input type="text" data-bind="value: $data" class=" form-control stepReg">
+                                                         </div>  =>
+                                                     </div>
+
+
+                                                      <button class="btn btn-info" type="button" data-bind="click:$root.addNextText">=></button>
 
                                                     <button class="btn btn-info  selectRegion" type="button"
                                                             data-toggle="modal"
@@ -91,7 +85,7 @@
                                                  </button>
 
 
-                                                 <button class="btn btn-danger stepRemove" type="button" title="移除"><i
+                                                 <button data-bind="click: $root.remove" class="btn btn-danger stepRemove" type="button" title="移除"><i
                                                          class="fa fa-times "></i>
                                                  </button>
 
@@ -100,6 +94,7 @@
 
                                 </div>
                                 <!-- /input-group -->
+                                 <textarea data-bind="value:syntax" cols="100" rows="10" disabled></textarea>
                             </div>
                             <!-- /.col-lg-6 -->
 
@@ -220,7 +215,7 @@
 <script src="bootstrap3/js/bootstrap.min.js"></script>
 <script type='text/javascript' src='js/vendor/knockout-3.0.0.js'></script>
 <script src="js/plugins.js"></script>
-<script src="js/main.js"></script>
+<!--<script src="js/main.js"></script>-->
 <script src="js/app.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
