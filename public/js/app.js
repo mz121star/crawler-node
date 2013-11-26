@@ -32,7 +32,7 @@ function AppViewModel() {
         {
             key: ko.observable("Title"),
             values: ko.observableArray([
-                ko.observable("/text/")
+                {valtext: ko.observable("/text/") }
             ])
         }
     ]);
@@ -47,7 +47,7 @@ function AppViewModel() {
 
            /*result += self.keyVals()[i].values().join("=>") + ",";*/
             for (var k = 0; k < self.keyVals()[i].values().length; k++) {
-                result += self.keyVals()[i].values()[k]()+"=>";
+                result += self.keyVals()[i].values().join("=>");
             }
             result+=","
 

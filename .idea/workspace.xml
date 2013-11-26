@@ -3,17 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="f97b9ef2-2246-4054-915a-09a6675ab70e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.ejs" afterPath="$PROJECT_DIR$/views/index.ejs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="crawler-node.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/index.js" changelist="f97b9ef2-2246-4054-915a-09a6675ab70e" time="1385105883447" ignored="false" />
-    <file path="/app.js" changelist="f97b9ef2-2246-4054-915a-09a6675ab70e" time="1385456544788" ignored="false" />
+    <file path="/app.js" changelist="f97b9ef2-2246-4054-915a-09a6675ab70e" time="1385459392642" ignored="false" />
     <file path="/index.ejs" changelist="f97b9ef2-2246-4054-915a-09a6675ab70e" time="1385456114940" ignored="false" />
     <file path="/main.js" changelist="f97b9ef2-2246-4054-915a-09a6675ab70e" time="1385430469088" ignored="false" />
     <file path="/main.css" changelist="f97b9ef2-2246-4054-915a-09a6675ab70e" time="1385371284561" ignored="false" />
-    <file path="/Dummy.txt" changelist="f97b9ef2-2246-4054-915a-09a6675ab70e" time="1385449182615" ignored="false" />
+    <file path="/Dummy.txt" changelist="f97b9ef2-2246-4054-915a-09a6675ab70e" time="1385456986045" ignored="false" />
     <file path="E:/nivo-slider/demo/复件 (2) demo.html" changelist="f97b9ef2-2246-4054-915a-09a6675ab70e" time="1384998146769" ignored="false" />
     <file path="/复件 (2) demo.html" changelist="f97b9ef2-2246-4054-915a-09a6675ab70e" time="1384998146769" ignored="false" />
     <file path="/README.md" changelist="f97b9ef2-2246-4054-915a-09a6675ab70e" time="1385003477148" ignored="false" />
@@ -70,7 +69,7 @@
       <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="9" selection-start="1131" selection-end="1132" vertical-scroll-proportion="0.36758322">
+            <state line="50" column="58" selection-start="1803" selection-end="1803" vertical-scroll-proportion="0.80752534">
               <folding />
             </state>
           </provider>
@@ -373,7 +372,11 @@
       <created>1385449185694</created>
       <updated>1385449185694</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="1版本&#10;横向增加不好用">
+      <created>1385456989199</created>
+      <updated>1385456989199</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -441,7 +444,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成增加textbox" />
+    <option name="LAST_COMMIT_MESSAGE" value="1版本&#10;横向增加不好用" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -458,6 +461,7 @@
     <MESSAGE value="jarrick" />
     <MESSAGE value="add knockout" />
     <MESSAGE value="完成增加textbox" />
+    <MESSAGE value="1版本&#10;横向增加不好用" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -571,7 +575,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="9" selection-start="1131" selection-end="1132" vertical-scroll-proportion="0.36758322">
+        <state line="50" column="58" selection-start="1803" selection-end="1803" vertical-scroll-proportion="0.80752534">
           <folding />
         </state>
       </provider>
