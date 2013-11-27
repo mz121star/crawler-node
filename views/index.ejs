@@ -59,20 +59,28 @@
                                            <span class="input-group-btn">
                                                    <div class="form-group">
                                                        <!-- <input type="text" class=" form-control stepKey mytip" data-toggle="popover" title=""  role="button"  data-original-title="选择类型" data-content="And here's some amazing content. It's very engaging. right?" >-->
-                                                       <input type="text" data-bind="value: key"
+                                                       <input type="text" data-bind="value: key,click:$root.selectKey"
                                                               class="btn-warning form-control stepKey mytip"
                                                               data-toggle="modal" data-target="#setKeyType">
                                                    </div>
 
                                                      <span class="label label-info" >=</span>
-                                                     <span data-bind="foreach: values" style="max-width: 700px ;overflow-x: scroll">
-                                                          <div class="form-group">
-                                                              <input type="text" data-bind="value: valtext"
-                                                                     class=" form-control btn-default stepReg">
-                                                              <button class="btn btn-danger btn-xs remove-btn " data-bind="click: $root.removeSubText" type="button" >
+                                                     <span data-bind="foreach: values"  >
+                                                          <div data-bind="event: { mouseover: $root.showIcons ,mouseout: $root.hideIcons },mouseoverBubble: false,mouseoutBubble: false" class="form-group">
+
+                                                              <input   type="text" data-bind="value: valtext, click:$root.previewText "
+                                                                     class=" form-control btn-default stepReg"  data-toggle="modal"
+                                                                     data-target="#myModal" title="预览">
+
+                                                              <button class="btn btn-danger btn-xs remove-btn  hideE"  data-bind="click: $root.removeSubText" type="button" >
                                                                   <i class="fa fa-times "></i>
                                                               </button>
-                                                          </div><span class="label label-info" >=></span>
+                                                              <button data-bind="click:$root.setCurrentTextForBrowser" class="btn btn-info hideE  selectRegion btn-xs preivew-btn "   type="button"
+                                                                      data-toggle="modal"
+                                                                      data-target="#right" title="选取"><i
+                                                                      class="fa fa-hand-o-up"></i></button>
+
+                                                          </div><span class="label label-info " >=></span>
                                                      </span>
 
                                                        <div class="input-group-btn">
@@ -80,16 +88,16 @@
                                                                     data-bind="click:$root.addNextText">=>
                                                             </button>
 
-                                                            <button class="btn btn-info  selectRegion" type="button"
+                                                        <!--    <button class="btn btn-info  selectRegion" type="button"
                                                                     data-toggle="modal"
                                                                     data-target="#right" title="选取"><i
-                                                                    class="fa fa-hand-o-up"></i></button>
+                                                                    class="fa fa-hand-o-up"></i></button>-->
 
-                                                            <button class="btn btn-success previewRegion" type="button"
+                                                    <!--        <button class="btn btn-success previewRegion" type="button"
                                                                     data-toggle="modal"
                                                                     data-target="#myModal" title="预览"><i
                                                                     class="fa fa-eye"></i> </i>
-                                                            </button>
+                                                            </button>-->
 
 
                                                             <button data-bind="click: $root.remove"
@@ -122,7 +130,7 @@
 
     </div>
 </div>
-
+<!-- Modal 变量生成器-->
 <div class="modal fade" id="setKeyType" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
     <div class="modal-dialog">
@@ -145,7 +153,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal" id="saveKey">Save</button>
+                <button type="button" data-bind="click:$root.saveKey" class="btn btn-success" data-dismiss="modal" id="saveKey">Save</button>
 
             </div>
 
@@ -156,7 +164,7 @@
 
 </div>
 
-
+<!-- Modal 浏览器-->
 <div class="modal fade" id="right" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
     <div class="modal-dialog">
@@ -202,7 +210,7 @@
 
 </div>
 
-<!-- Modal -->
+<!-- Modal 表达式预览-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -211,11 +219,12 @@
                 <h4 class="modal-title" id="myModalLabel"> 表达式预览</h4>
             </div>
             <div class="modal-body">
-                <textarea id="expPreview"></textarea>
+                <textarea data-bind="value:expStr" id="expPreview" cols="50" rows="4"></textarea>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
+                <button type="button" class="btn btn-success" data-bind="click:$root.saveExpression" >Save Change</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -229,7 +238,7 @@
 <script src="bootstrap3/js/bootstrap.min.js"></script>
 <script type='text/javascript' src='js/vendor/knockout-3.0.0.js'></script>
 <script src="js/plugins.js"></script>
-<!--<script src="js/main.js"></script>-->
+<script src="js/main.js"></script>
 <script src="js/app.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

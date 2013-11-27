@@ -1,8 +1,8 @@
 (function ($) {
-    $('#stepReg').tooltip({})
-    /*********************************************************************
+
+ /*   *//**//*********************************************************************
      * 注册全局变量
-     **********************************************************************/
+     **********************************************************************//**//**/
     var browser = $("#browser")
         //页面上step文本框个数
         ,counter=0
@@ -50,10 +50,10 @@
                // $("#right").removeClass("col-md-8").addClass("col-md-12")
             })
         }
-
-    /*********************************************************************
+     /*
+    *//*********************************************************************
      * 为iframe中的浏览器注册事件
-     **********************************************************************/
+     **********************************************************************//*
     ToggleSize();
     var registerEvent = function () {
         var doc = document.getElementById('browser').contentWindow.document;
@@ -75,12 +75,11 @@
         $(doc).on("mouseout", function (a) {
             RemoveStyle(a);
         })
-
     }
 
-    /*********************************************************************
+    *//*********************************************************************
      * 获取ifram为全局对象，并注册load事件
-     **********************************************************************/
+     **********************************************************************//*
 
     browser.load(function () {
         $("#status").html("Local iframe is now loaded.");
@@ -89,9 +88,9 @@
         registerEvent();
     });
 
-    /*********************************************************************
+    *//*********************************************************************
      * 浏览器iframe事件，当点击GO按钮，转向网址
-     **********************************************************************/
+     **********************************************************************//*
     $("#go").on("click", function () {
 
        console.log( $("input:radio[name='optionsRadios'].checked").val() )
@@ -104,9 +103,9 @@
     })
 
 
-    /*********************************************************************
+    *//*********************************************************************
      * 工具栏事件区域
-     **********************************************************************/
+     **********************************************************************//*
 
     $(".selectRegion").on("click",function(){
        var parent= $(this).parent().parent()
@@ -130,17 +129,17 @@
     $("#saveKey").on("click",function(){
         _CURRENT_KEY_TEXT.val( $("#keyResult").val())
     })
-    /**
+    *//**
      * 移除文本公式组件
-     */
+     *//*
     $(".stepRemove").on("click",function(){
         $(this).parent().parent().remove();
     })
-    /**
+    *//**
      * 添加文本公式组件
-     */
+     *//*
     $("#addStep").on("click",function(){
-      /*  $(".mytip").popover("hide");*/
+      *//*  $(".mytip").popover("hide");*//*
        var shadow= $("#stepTemp").clone(true) ;
         $(shadow).find(".stepReg").val("");
         $(shadow).find(".stepKey").val("");
@@ -149,7 +148,29 @@
        $("#stepRegion").append(shadow);
     })
 
+*/
+    var registerEvent = function () {
+        var doc = document.getElementById('browser').contentWindow.document;
+        $(doc).on("click", function (a) {
+            if(_CURRENT_REG_TEXT){
+                RemoveStyle(a);
+                $(_CURRENT_REG_TEXT).val(a.target.outerHTML)
+            }
+            console.log(a.target.innerHTML);
+            console.log(a.target.outerHTML);
 
+            return false
+        })
+        $(doc).on("mouseover", function (a) {
+            var style= $(a.target).attr("style") ;
+            $(a.target).data("reunion-style",style);
+            $(a.target).css("border", "1px solid red")
+        })
+        $(doc).on("mouseout", function (a) {
+            RemoveStyle(a);
+        })
 
+    }  ;
+    registerEvent()
 
 })(jQuery)

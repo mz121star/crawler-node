@@ -22,6 +22,14 @@ function AppViewModel() {
         var currentVal = self.lastName();        // Read the current value
         self.lastName(currentVal.toUpperCase()); // Write back a modified value
     };
+    self.expStr=    ko.observable();
+    var browser = $("#browser")
+    //页面上step文本框个数
+        ,counter=0
+    //当前选中的step文本框
+      ,_CURRENT_REG_TEXT
+        ,_CURRENT_KEY_TEXT
+      //self._CURRENT_REG_TEXT  =ko.observable();
     self.addNewText = function () {
         /*  self.keyVals.push({
          key: ko.observable("Title"),
@@ -60,7 +68,40 @@ function AppViewModel() {
                 }
             }
         }
+    }  ;
+    self.showIcons=function(data, event) {
+        $(event.target.parentNode).find("button").show()
     }
+    self.hideIcons=function(data, event) {
+        $(event.target.parentNode).find("button").hide()
+    }
+    self.setCurrentTextForBrowser=function(data, event){
+         _CURRENT_REG_TEXT= $(event.target.parentNode).find(".stepReg")[0];
+    };
+  /*  self.setCurrentText=function(data, event){
+        _CURRENT_REG_TEXT= $(event.target)[0];
+    };*/
+    self.previewText=function(data, event){
+        _CURRENT_REG_TEXT= $(event.target)[0];
+        self.expStr( $(event.target).val());
+           /* $("#expPreview"). val( $(event.target).val())*/
+    }
+    self.saveExpression=function(data,event){
+        $(_CURRENT_REG_TEXT).val(self.expStr());
+        $(_CURRENT_REG_TEXT).change();
+    };
+    self.selectKey=function(data,event){
+        _CURRENT_KEY_TEXT=$(event.target) ;
+    };
+    self.saveKey=function(data,event){
+        _CURRENT_KEY_TEXT.val( $("#keyResult").val())
+        $(_CURRENT_KEY_TEXT).change();
+    };
+    $(".keyVar").on("click",function(){
+        var result="["+$(this).val()+$("#keyName").val()+"]";
+        $("#keyResult").val(result)
+    });
+
 
     self.syntax = ko.computed(function () {
         console.log("over")
